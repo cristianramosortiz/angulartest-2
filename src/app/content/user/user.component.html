@@ -1,0 +1,137 @@
+<h2>Formulario: usuario</h2>
+<hr>
+<div class="row" >
+    <div class="col">
+        <form (ngSubmit)="guardar()" [formGroup]="userFormulario"
+        autocomplete="off">
+            <!-- campo de nombre -->
+            <label class="mb-3 row col-form-label">Nombre</label>
+            <div class="col-sm-9">
+                <input type="text" 
+                        class="form-control" 
+                        formControlName="username"
+                        placeholder="Nombre de usuario">
+
+                <span class="form-text text-danger"
+                        *ngIf="invalidspace('username')"> 
+                    Error en el campo nombre, nombre tiene que ser menos de 4 letras y no contener ningun valor numerico
+                </span>
+            </div>
+
+            <!-- campo de apellido -->
+            <label class="mb-3 row col-form-label">Apellido</label>
+            <div class="col-sm-9">
+                <input type="text" 
+                        class="form-control" 
+                        formControlName="lastname"
+                        placeholder="apelldio de usuario">
+
+                <span class="form-text text-danger"
+                        *ngIf="invalidspace('lastname')"> 
+                        Error en el campo apellido, apellido tiene que ser menos de 4 letras y no contener ningun valor numerico
+                    </span>
+            </div>
+            <!-- campo de numero -->
+            <label class="mb-3 row col-form-label">Edad</label>
+            <div class="col-sm-9">
+                <input type="text"
+                        class="form-control"
+                        formControlName="age" 
+                        placeholder="edad de usuario">
+
+                <span class="form-text text-danger"
+                        *ngIf="invalidspace('age')"> 
+                    Error en el campo edad, La edad tiene que ser entre 18 a 65 y ser solo valores numericos
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" 
+                            class="btn-primary float-end ">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{ userFormulario.valid }}</pre>
+        <span>value</span>
+        <pre>{{ userFormulario.value | json }}</pre>
+    </div> -->
+
+    <div>
+        <div>
+            <table class="table table-hover text-bg-dark p-3" >
+                <thead>
+                    <tr>
+                        <th> Estado </th>
+                        <th> nombre </th>
+                        <th> apellido </th>
+                        <th> edad </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td> {{ userFormulario.valid }} </td>
+                        <td> {{ userFormulario.value.username }} </td>
+                        <td> {{ userFormulario.value.lastname }} </td>
+                        <td> {{ userFormulario.value.age }} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- 
+        <form (ngSubmit)="guardar( userFormulariotemplate )" 
+        #userFormulariotemplate="ngForm"
+        autocomplete="off">
+
+            <label class="mb-3 row col-form-label">Nombre</label>
+            <div class="col-sm-9">
+                <input type="text" 
+                class="form-control" 
+                ngModel
+                name="user"
+                placeholder="Nombre de usuario">
+                <span class="form-text text-danger"> Nombre no puede tener numeros </span>
+            </div>
+
+            <label class="mb-3 row col-form-label">Apellido</label>
+            <div class="col-sm-9">
+                <input type="text" 
+                class="form-control" 
+                placeholder="apelldio de usuario">
+                <span class="form-text text-danger"> Apellido no puede tener numeros </span>
+            </div>
+
+            <label class="mb-3 row col-form-label">Edad</label>
+            <div class="col-sm-9">
+                <input type="text"
+                 class="form-control" 
+                 placeholder="edad de usuario">
+                <span class="form-text text-danger"> Edad no es valido </span>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn-primary float-end">Guardar</button>
+                </div>
+            </div>
+        </form>    
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{ userFormulariotemplate.valid }}</pre>
+        <span>value</span>
+        <pre>{{ userFormulariotemplate.value | json }}</pre>
+    </div>
+</div> -->
